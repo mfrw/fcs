@@ -1,0 +1,141 @@
+%author : Muhammad Falak R Wani (mfrw)
+
+%Course : CSE545 (FCS)
+
+
+\documentclass[11pt]{article}
+\usepackage[pdftex]{graphicx, color}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\headheight 8pt \headsep 20pt \footskip 30pt
+\textheight 9in \textwidth 6.5in
+\oddsidemargin 0in \evensidemargin 0in
+\topmargin -.35in
+
+\lstset{basicstyle=\small\ttfamily,breaklines=true}
+
+\begin{document}
+\begin{center}
+%% Change this:
+\LARGE CSE 345/545: Foundations to Computer Security \\
+\Large Homework Assignment III (\textbf{100} Points) \\
+\Large Due: \texttt{2359hrs 1 November 2017} \\
+Plagiarism policies will be strictly enforced. \\
+\end{center}
+
+\noindent We hope the previous assignment was fun and learning. This assignment will also be in the same flavour.\\
+Required files if any are available: \href{https://www.github.com/mfrw/fcs/}{\texttt{github.com/mfrw/fcs\\}}
+
+\noindent {\Large Part I} [\texttt{20 points}] \\\\
+The PGP (Pretty Good Privacy) is the defacto standard for signing, encrypting, and decrypting texts, e-mails, files, directories, and whole disk partitions and to increase the security of e-mail communications. Phil Zimmermann developed PGP in 1991. We usually use the GNU version of the PGP called GPG (GNU Privacy Guard).
+Go through RFC 4880 for more information.
+\begin{enumerate}
+	\item Create your public/private key pair (4096) \& upload the public key somewhere internet. (Please figure out where you have to upload, ofcourse, google knows)
+	\item In a text file suggest a good book/movie, anything recreational for the course-staff. Encrypt the file with the same public key with which you decrypted the
+		assignment. Make sure you sign the file too with your own private key. Use the ASCII armored option when you encrypt.
+	\item Can you decrypt the contents of the file you just created ? Why or Why not ? Give Reasons.
+	\item I have a detached signature of the whole assignment pdf online, please verify, using gpg, if you have the right assignment version or not ?
+\end{enumerate}
+
+\noindent {\Large Part II} [\texttt{30 points}] \\\\
+Cryptographic hash functions have a variety of uses. One of the typical use cases is the checksum of a file. Integrity of a file is ensured if the checksum matches, with a checksum that is earlier created.
+\begin{enumerate}
+	\item Calcuate the md5, sha1, sha2 (all 4 variants), sha3 of \texttt{part2-1.txt}. Time them on some large files of your choice to get a flavour for their relative speed.
+	\item md5 ha been abandoned by the crypto community a while back and the recent addition to this lot is sha1. Follow the instructions in \texttt{part2/README}.
+
+\newpage
+\noindent {\Large Part III} [\texttt{30 points}] \\\\
+Password are a very important token for security. All kinds of replacements have been attempted to replace the password like biometric, otp based etc, but none has the
+simplicity, ease of implementation and usability of a password. Choosing a secure and weired/non-guessable password is very important.
+
+\begin{enumerate}
+	\item { 
+		Write a C (only c) program that implemets a the password functionality. Use the starter files.
+		\begin{verbatim}
+		# Registering a user
+		mfrw@kp $: ./passwd -r
+		Enter Username: mfrw
+		Enter Password:         # note noting should get printed - like unix passwords || extra credit if you print ******...
+		# Authentication
+		mfrw@kp $: ./passwd -a
+		Enter Username: abcd
+		[error] User not registered
+		# Ok second Try
+		mfrw@kp $: ./passwd -a
+		Enter Username: mfrw
+		Enter Password: *******
+		[success] Authenticated
+		\end{verbatim}
+		}
+
+
+
+	\item Write a seperate C program and assuming you dont know the password of some registered user, launch a brute force attack. Follow the coding conventions of passwd.
+
+	\item Open up your /etc/passwd file. If you are on Windows, use the lab (linux) machines. Study its permissions. Where is the password for your Username ? Can you explain the rationale ?
+	
+	\item Modify the passwd program with minimal intrusion so that bruteforcing becomes harder.
+	
+	\item Download John The Ripper, compile and install it. Get an unshadowed version of you password file and crack the password for your username.
+
+
+\end{enumerate}
+
+\noindent {\Large Part IV} [\texttt{20 points}] \\\\
+There are a lot of tools in the domain of security. here we try to scratch the surface of some.
+\begin{enumerate}
+	\item {
+			Nix based systems have an embedded industry standard firewall called as iptables. It uses the net-filter framework inside the Linux Kernel and Berkely Packet Filter subsystem in BSD based systems. A new replacement of iptables called nftables is also under heavy development. Use iptables to:
+		    \begin{itemize}
+			    \item Disable Echo-Reply (ping) to your machine. Your machine should not reply to ping from any other machine. (act dead/not available)
+			    \item Host a webpage on your machine. Use iptables to only allow your own mobile-phone to access the web-page and block all others.
+		    \end{itemize}
+		}
+	\item {
+			nmap (Netowrk Mapper) is an important tool for discovering devices on your network. It has excellent documentation. Use nmap to:
+		\begin{itemize}
+			\item Find all computers in the MTech lab subnet which provide access to ssh.
+			\item Do an OS finger-printing of the hostel wifi. Provide stats of type of os found (eg 70\% Windows, 20\%Linux ...) [please prove these stats wrong]
+		\end{itemize}
+		}
+	\item  { 
+		irc is cool place to get answers and usually there are wayy smarter people than normal lurking on. People who have created things like openssl, golang, c, python etc. Your task is to :
+		\being{itemize}
+			\item Register yourself on freenode irc network. Get a cool nick.
+			\item FYI, this course has an irc channel on freenode #fcs17. Join there and interact with anyone online, otherwise a simple hello would work.
+		\end{itemize}
+	}
+
+	\item {
+			Connect to the iiitd vpn. Dont use the iiitd internet while connecting.
+			}
+
+	\item {
+			Setup a vpn server on a random lab machine. Connect you mobile phone to it. Host a web-page on your computer. Access the webpage through the vpn. Verify the IP address that shows up in the log of the webserver. This may be helpful: \href{https://github.com/Nyr/openvpn-install}{\texttt{https://github.com/Nyr/openvpn-install}}
+
+			}
+
+	    
+\end{enumerate}
+\noindent {\Large Part V} [\texttt{20 points}] \\\\
+Add network related part here and also for the hactober fest as extra credit maybe ??
+\end{itemize}
+\vspace{1cm}
+\hrulefill
+
+\noindent {\Large Submission } \\
+
+\noindent Submit a zip file containing 
+\begin{itemize}
+    \item  A pdf file with brief steps and screen shots completely documenting the process, as you went. Note that while taking screen-shots your username is visible in the screen shot.
+    \item  The Source code of programs you write. 
+    
+    \end{itemize}
+
+\noindent{\textbf{Submission guidelines (points will be deducted if not followed): Please post it onto Backpack by the deadline. Do not send it by email! No email submissions will be entertained. }}
+\end{document}
+
