@@ -122,14 +122,37 @@ There are a lot of tools in the domain of security. here we try to scratch the s
 	    
 \end{enumerate}
 \noindent {\Large Part V} [\texttt{20 points}] \\\\
+In this section the task is to analyse network packet traces (commonly called a ``pcap"). Extract relevant details using the Wireshark 
+network analyzer.
 Add network related part here and also for the hactober fest as extra credit maybe ??
+\begin{itemize}
+	\item {
+			In the pcap file \texttt{log.pcap} Consisely answer the question below. Each response should require atmost 2-3 sentences.
+			\begin{enumerate}
+				\item Multiple devices are connected to the local network. What are their MAC and IP addresses?
+				\item What type of network does this appear (e.g., a large corp, an ISP backbone etc)? Support your claim with some evidence.
+				\item One of the clients connects to an FTP server during the trace. What is the DNS hostname of the server ? Do you think FTP is a
+					safe protocol to transfer confidential data? Name a replacement that could be used instead of FTP which is not clear-text.
+				\item One of the clients make HTTPS connections to sites other than facebook. What is domain name of the site the client is connecting to?
+					Is there any way the HTTPS server can protect against leak of information which was discoverd in the previous question?
+					During TLS handshake, the client provides a list of supported cipher suites, are any of these worrisome from a security point of view?
+				\item One of the clients makes some requests to facebook. Even though logins are porcessed over HTTPS, what is insecure about the way the browser is authenticated to fb? How would an attacker leverage the above info to impersonate the user. 
+			\end{enumerate}
+		}
+	\item {
+			Write a \texttt{python} program that analyzes a pcap \texttt{tcpdump.pcap} file inorder to detect possible \texttt{SYN} scans. Use \texttt{dpkt} to make your life easier.
+			The output of the program should be the malicious IP's doing the scans. Your Task is to is find atleast one malicious IP
+			}
+		\item {
+				Please sign up for Hacktober Fest. Send in 4 pull requests to preferably to security projects. It would fetch you a cool T-shirt. If you are unable to find a repo to contribute, contact the course staff and depending on the number of people we might setup a small blog where you could send your 4 PR's to complete the challenge.
+				}
 \end{itemize}
 \vspace{1cm}
 \hrulefill
 
 \noindent {\Large Submission } \\
 
-\noindent Submit a zip file containing 
+\noindent Submit a zip file, which is encrypted by the public key you opened the assignment with, sign it with your own key. It should contain: 
 \begin{itemize}
     \item  A pdf file with brief steps and screen shots completely documenting the process, as you went. Note that while taking screen-shots your username is visible in the screen shot.
     \item  The Source code of programs you write. 
