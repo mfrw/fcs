@@ -62,6 +62,11 @@ void find_collision(const uint32 IV[], uint32 msg1block0[], uint32 msg1block1[],
 
 int main(int argc, char *argv[]) {
 
+	if (argc < 2) {
+		fprintf(stderr, "Usage %s <prefix_file>\n", argv[0]);
+		return -1;
+	}
+
 	seed32_1 = uint32(time(NULL));
 	seed32_2 = 0x12345678;
 	uint32 IV[4] = { MD5IV[0], MD5IV[1], MD5IV[2], MD5IV[3] };
