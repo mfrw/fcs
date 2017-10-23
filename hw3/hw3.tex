@@ -27,39 +27,43 @@
 Plagiarism policies will be strictly enforced. \\
 \end{center}
 
-\noindent We hope the previous assignment was fun and learning. This assignment will also be in the same flavour.\\
+\noindent We hope the previous assignment was fun and had something for you to learn. This assignment will also be in the same flavour.
 Required files if any are available: \href{https://www.github.com/mfrw/fcs/}{\texttt{github.com/mfrw/fcs\\}}
 
+\noindent If you \texttt{honestly} managed to reach here, the assignment should be a cake-walk.\\
+
+
+
 \noindent {\Large Part I} [\texttt{20 points}] \\\\
-The PGP (Pretty Good Privacy) is the defacto standard for signing, encrypting, and decrypting texts, e-mails, files, directories, and whole disk partitions and to increase the security of e-mail communications. Phil Zimmermann developed PGP in 1991. We usually use the GNU version of the PGP called GPG (GNU Privacy Guard).
+The \texttt{PGP (Pretty Good Privacy)} is the defacto standard for signing, encrypting, and decrypting texts, e-mails, files, directories, and whole disk partitions and to increase the security of e-mail communications. Phil Zimmermann developed \texttt{PGP} in 1991. We usually use the GNU version of the \texttt{PGP} called \texttt{GPG} (GNU Privacy Guard).
 Go through RFC 4880 for more information.
 \begin{enumerate}
-	\item Create your public/private key pair (4096) \& upload the public key somewhere internet. (Please figure out where you have to upload, ofcourse, google knows)
-	\item In a text file suggest a good book/movie, anything recreational for the course-staff. Encrypt the file with the same public key with which you decrypted the
-		assignment. Make sure you sign the file too with your own private key. Use the ASCII armored option when you encrypt.
+	\item Create your \texttt{public/private} key pair (4096 bit) \& \texttt{upload} your public key to the \texttt{mit} keyserver.
+	\item In a text file \texttt{suggestion.txt} suggest a good book/movie, anything recreational for the course-staff. \texttt{Encrypt} the file with the \texttt{same public key} with which you decrypted the
+		assignment. Make sure you \texttt{sign} it too with your own private key. Use the \texttt{ASCII armored} option when you encrypt.
 	\item Can you decrypt the contents of the file you just created ? Why or Why not ? Give Reasons.
-	\item I have a detached signature of the whole assignment pdf online, please verify, using gpg, if you have the right assignment version or not ?
+	\item A detached signature of the whole assignment pdf is in the zip file, please verify, using gpg, if you have the right assignment version or not ?
 \end{enumerate}
 
 \noindent {\Large Part II} [\texttt{30 points}] \\\\
-Cryptographic hash functions have a variety of uses. One of the typical use cases is the checksum of a file. Integrity of a file is ensured if the checksum matches, with a checksum that is earlier created.
+Cryptographic hash functions have a variety of uses. One of the typical use cases is the checksum of a file. Integrity of a file is ensured if the checksum is same.
 \begin{enumerate}
-	\item Calcuate the md5, sha1, sha2 (all 4 variants), sha3 of \texttt{part2-1.txt}. Time them on some large files of your choice to get a flavour for their relative speed.
-	\item md5 ha been abandoned by the crypto community a while back and the recent addition to this lot is sha1. Follow the instructions in \texttt{part2/README}.
+	\item Calcuate the \texttt{md5, sha1, sha2 (all 4 variants), sha3} of \texttt{part2-1.txt}. Time them on some large files of your choice to get a flavour for their relative speed.
+	\item \texttt{md5} has been abandoned by the crypto community a while back and the recent addition to this lot is sha1. Follow the instructions in \texttt{part2/README} to create two files which are different but have the same \texttt{md5} sum. This attack is the \texttt{Length Extension} attack.
+\end{enumerate}
 
-\newpage
 \noindent {\Large Part III} [\texttt{30 points}] \\\\
 Password are a very important token for security. All kinds of replacements have been attempted to replace the password like biometric, otp based etc, but none has the
 simplicity, ease of implementation and usability of a password. Choosing a secure and weired/non-guessable password is very important.
-
+\newpage
 \begin{enumerate}
 	\item { 
-		Write a C (only c) program that implements the password functionality. Use the starter files.
+		Write \texttt{C} (only C) program that implemets a the password functionality. Use the starter files.
 		\begin{verbatim}
 		# Registering a user
 		mfrw@kp $: ./passwd -r
 		Enter Username: mfrw
-		Enter Password:         # note noting should get printed - like unix passwords || extra credit if you print ******...
+		Enter Password:         # note noting should get printed - like unix passwords
 		# Authentication
 		mfrw@kp $: ./passwd -a
 		Enter Username: abcd
@@ -67,67 +71,58 @@ simplicity, ease of implementation and usability of a password. Choosing a secur
 		# Ok second Try
 		mfrw@kp $: ./passwd -a
 		Enter Username: mfrw
-		Enter Password: *******
+		Enter Password: *******  # bonus for printing stars
 		[success] Authenticated
 		\end{verbatim}
 		}
-
-
-
-	\item Write a seperate C program and assuming you dont know the password of some registered user, launch a brute force attack. Follow the coding conventions of passwd.
-
-	\item Open up your /etc/passwd file. If you are on Windows, use the lab (linux) machines. Study its permissions. Where is the password for your Username ? Can you explain the rationale ?
+	\item Write a seperate C program and assuming you don't know the password of some registered user, launch a \texttt{brute force} attack. Follow the coding conventions of \texttt{passwd}.
+	\item Open up your \texttt{/etc/passwd} file. If you are on Windows, use the lab (linux) machines. Study its permissions. Where is the password for your Username ? Can you explain the rationale ?
 	
-	\item Modify the passwd program with minimal intrusion so that bruteforcing becomes harder.
+	\item Modify the \texttt{passwd} program with minimal intrusion so that \texttt{bruteforcing} becomes harder. Name it \texttt{passwd2}.
 	
-	\item Download John The Ripper, compile and install it. Get an unshadowed version of you password file and crack the password for your username.
-
-
+	\item Download \texttt{John The Ripper}, compile and install it. Grab an \texttt{unshadowed} version of you \texttt{/etc/password} file and \texttt{crack} the password for your username.
 \end{enumerate}
-
 \noindent {\Large Part IV} [\texttt{20 points}] \\\\
 There are a lot of tools in the domain of security. here we try to scratch the surface of some.
 \begin{enumerate}
 	\item {
-			Nix based systems have an embedded industry standard firewall called as iptables. It uses the net-filter framework inside the Linux Kernel and Berkely Packet Filter subsystem in BSD based systems. A new replacement of iptables called nftables is also under heavy development. Use iptables to:
+			Nix based systems have an embedded industry standard firewall called as \texttt{packet-filter}. It uses the \texttt{net-filter} framework inside the Linux Kernel and \texttt{BPF} (Berkely Packet Filter) subsystem in BSD based systems. The linux variant of packet-filer is \texttt{iptables}. A replacement of \texttt{iptables} called \texttt{nftables}\footnote{GSoC--2016 \& probably GSoC--2017} is also under heavy development. Use \texttt{iptables} to:
 		    \begin{itemize}
-			    \item Disable Echo-Reply (ping) to your machine. Your machine should not reply to ping from any other machine. (act dead/not available)
-			    \item Host a webpage on your machine. Use iptables to only allow your own mobile-phone to access the web-page and block all others.
+			    \item Disable \texttt{Echo-Reply} (pong) to your machine. Your machine should not reply to ping from any other machine (act dead/not available). You should be \texttt{able to ping other devices} though.
+			    \item Host a webpage on your machine. Use \texttt{iptables} to \texttt{only allow} your own \texttt{mobile-phone} to \texttt{access} the web-page and \texttt{block} all others.
 		    \end{itemize}
 		}
 	\item {
-			nmap (Netowrk Mapper) is an important tool for discovering devices on your network. It has excellent documentation. Use nmap to:
+			\texttt{nmap} (Netowrk Mapper) is an important tool for discovering devices on your network. It has excellent documentation. Use nmap to:
 		\begin{itemize}
-			\item Find all computers in the MTech lab subnet which provide access to ssh.
-			\item Do an OS finger-printing of the hostel wifi. Provide stats of type of os found (eg 70\% Windows, 20\%Linux ...) [please prove these stats wrong]
+			\item \texttt{Find} all computers in the MTech lab \texttt{subnet} which provide \texttt{access to ssh}.
+			\item Do an \texttt{OS finger-printing} of the hostel wifi. \texttt{Provide stats} of type of OS found (eg \textbf{70}\%Windows, 20\%Linux ...) [please prove these stats wrong]
 		\end{itemize}
 		}
 	\item  { 
-		irc is cool place to get answers and usually there are wayy smarter people than normal lurking on. People who have created things like openssl, golang, c, python etc. Your task is to :
-		\being{itemize}
-			\item Register yourself on freenode irc network. Get a cool nick.
-			\item FYI, this course has an irc channel on freenode #fcs17. Join there and interact with anyone online, otherwise a simple hello would work.
+		\texttt{IRC} is cool place to get answers quickly. Usually there are very smart people lurking on with an intention to help. Your task is to :
+		\begin{itemize}
+			\item \texttt{Register} yourself on freenode irc network. Get a cool nick.
+			\item FYI, this course has an irc channel on freenode \texttt{\#fcs17}. Join there and interact with anyone online, otherwise a simple hello would work.
+			\item Find some security related \texttt{irc channels}.
 		\end{itemize}
 	}
-
 	\item {
-			Connect to the iiitd vpn. Dont use the iiitd internet while connecting.
+			\texttt{Connect} to the \texttt{IIIT-D VPN}. Don't use the IIIT-D internet while connecting.
 			}
-
 	\item {
-			Setup a vpn server on a random lab machine. Connect you mobile phone to it. Host a web-page on your computer. Access the webpage through the vpn. Verify the IP address that shows up in the log of the webserver. This may be helpful: \href{https://github.com/Nyr/openvpn-install}{\texttt{https://github.com/Nyr/openvpn-install}}
-
+			Setup a \texttt{VPN server} on a random lab machine. Connect your mobile-phone to it. Host a web-page on your computer. Access the \texttt{webpage} through the \texttt{VPN}. Verify the IP address that shows up in the log of the webserver. \\
+			This may be helpful: \href{https://github.com/Nyr/openvpn-install}{\texttt{https://github.com/Nyr/openvpn-install}}
 			}
-
 	    
 \end{enumerate}
 \noindent {\Large Part V} [\texttt{20 points}] \\\\
-In this section the task is to analyse network packet traces (commonly called a ``pcap"). Extract relevant details using the Wireshark 
+In this section the task is to analyse network packet traces (commonly called a ``pcap"). Extract relevant details using the \texttt{Wireshark} 
 network analyzer.
-Add network related part here and also for the hactober fest as extra credit maybe ??
+
 \begin{itemize}
 	\item {
-			In the pcap file \texttt{log.pcap} Consisely answer the question below. Each response should require atmost 2-3 sentences.
+			Examine the pcap file \texttt{log.pcap} and concisely answer the question below. Each response should require utmost 2-3 sentences.
 			\begin{enumerate}
 				\item Multiple devices are connected to the local network. What are their MAC and IP addresses?
 				\item What type of network does this appear (e.g., a large corp, an ISP backbone etc)? Support your claim with some evidence.
@@ -140,25 +135,20 @@ Add network related part here and also for the hactober fest as extra credit may
 			\end{enumerate}
 		}
 	\item {
-			Write a \texttt{python} program that analyzes a pcap \texttt{tcpdump.pcap} file inorder to detect possible \texttt{SYN} scans. Use \texttt{dpkt} to make your life easier.
-			The output of the program should be the malicious IP's doing the scans. Your Task is to is find atleast one malicious IP
+			Write a \texttt{python} program that analyzes a pcap file   \href{http://192.168.1.41:8080/}{\texttt{http://192.168.141:8080}}. Download and analyse \texttt{tcpdump.pcap} file inorder to detect possible \texttt{SYN} scans. Use \texttt{dpkt} to make your life easier.
+			The output of the program should be the malicious IP's doing the scans. \texttt{Your Task is to is find atleast one malicious IP}.
 			}
 		\item {
-				Please sign up for Hacktober Fest. Send in 4 pull requests to preferably to security projects. It would fetch you a cool T-shirt. If you are unable to find a repo to contribute, contact the course staff and depending on the number of people we might setup a small blog where you could send your 4 PR's to complete the challenge.
+				Please sign up for \texttt{Hacktober Fest}. Send in 4 pull requests, preferably to security projects. \texttt{It would fetch you a cool T-shirt}. If you are unable to find a repo to contribute, contact the course staff and depending on the number of people we might try to setup something, where you could send your PR's to complete the challenge. \textbf{Last date for hacktober fest is 31 Oct}.
 				}
 \end{itemize}
-\vspace{1cm}
-\hrulefill
 
-\noindent {\Large Submission } \\
-
-\noindent Submit a zip file, which is encrypted by the public key you opened the assignment with, sign it with your own key. It should contain: 
+\noindent {\Large Submission } \\\\
+\noindent Submit a \textbf{zip}\footnote{ Please upload only zip files -- \textbf{dumb\_script}} file, \texttt{which is encrypted by the public key} you opened the assignment with, \texttt{sign it with your own key}. It should contain: 
 \begin{itemize}
     \item  A pdf file with brief steps and screen shots completely documenting the process, as you went. Note that while taking screen-shots your username is visible in the screen shot.
     \item  The Source code of programs you write. 
     
     \end{itemize}
-
 \noindent{\textbf{Submission guidelines (points will be deducted if not followed): Please post it onto Backpack by the deadline. Do not send it by email! No email submissions will be entertained. }}
 \end{document}
-
