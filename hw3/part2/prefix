@@ -1,0 +1,13 @@
+#!/usr/bin/python2
+# -*- coding: utf-8 -*-
+
+from hashlib import sha256
+print "This Program will print a sha2 (256-bit) of a blob created by fastcoll"
+print "A typical length extention attack works on the following principle"
+print " |prefix|some-blob|suffix| "
+print "  The way to expoit this kind of vulnerability is have the actual program"
+print "  logic be contained in only the suffix and prefix. Have a good part and "
+print "  a bad part in an if condition. Since you control the middle blobs, a   "
+print "  simple if condition can make your program do what you want, without    "
+print "  changing the md5 sum of the program"
+blob = """
