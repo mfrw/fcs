@@ -1,0 +1,15 @@
+A dummy, unshadowed password file is supplied.
+
+Running john on it
+
+$ john passwd
+Warning: detected hash type "sha512crypt", but the string is also recognized as "crypt"
+Use the "--format=crypt" option to force loading these as that type instead
+Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 64/64 OpenSSL])
+No password hashes left to crack (see FAQ)
+
+$ john -show passwd
+fcs:idontknow:1003:1003:Foundataions of computer security,,,:/home/fcs:/bin/bash
+
+1 password hash cracked, 0 left
+
